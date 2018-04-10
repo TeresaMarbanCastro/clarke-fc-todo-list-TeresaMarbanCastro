@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
   <title>To-do-list</title>
 </head>
 <body>
 <main>
+
   <div class="main__page">
+
     <header class="header__page">
       <img src="images/logo.jpg" alt="Logo de Adalab" class="header__logo">
       <div class="header__date">
@@ -23,6 +26,16 @@
 
     <section class="tasks__container">
       <ul class="tasks__list">
+        <li class="tasks__item">
+          <div class="round">
+            <input type="checkbox" id="checkbox" />
+            <label for="checkbox"></label>
+          </div>
+       <h4 class="item__name">Tarea 1</h4>
+       <div class="container">
+
+</div>
+         </li>
       </ul>
 
     </section>
@@ -35,8 +48,9 @@
       <div class="new__task">
         <p class="new__task--title">Nueva tarea</p>
         <input class="new__task--input" placeholder="Tarea 1">
-        <button class="new__task--button">Añadir</button>
+        <button class="new__task--button" onclick="addTask()">Añadir</button>
       </div>
+
     </div>
   </div>
 </main>
