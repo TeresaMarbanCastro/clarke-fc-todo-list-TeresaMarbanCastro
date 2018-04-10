@@ -39,9 +39,11 @@ buttonShow.addEventListener('click', addTask);
 //Create New Task
 var allTasks = [];
 var buttonTask = document.querySelector('.new__task--button');
+//push
 function addNewTask(){
-  var placeTask = document.querySelector('.item__name');
-  var dataTask = document.querySelector('.new__task--input').value;
+    var placeTask = document.querySelector('.item__name');
+    var dataTask = document.querySelector('.new__task--input').value;
   placeTask.innerHTML = dataTask;
+
 }
 buttonTask.addEventListener('click', addNewTask);
