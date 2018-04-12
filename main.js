@@ -23,46 +23,38 @@ function addTask(){
 buttonShow.addEventListener('click', addTask);
 
 //LOCAL STORAGE
+let getLocalStorage = localStorage.getItem('key')? JSON.parse(localStorage.getItem('key')) : console.log("No hay entradas en el local storage");
 saveInLocalStorage();
-getLocalStorage();
-function getLocalStorage(){
-  if(localStorage.getItem("key")){
-    const key = JSON.parse(localStorage.getItem("key"));
-    console.log(key);
-  }else{
-    console.log("No hay entradas en el local storage");
-  }
-}
 function saveInLocalStorage(){
   let localTask = document.querySelector('.new__task--input');
   const buttonTask = document.querySelector('.new__task--button');
   const listTask = document.querySelector('.tasks__list');
-
-  // const buttonAdd = document.querySelector('.button--add');
-  // const addTask = document.querySelector('.new-task');
   let allTasks = [];
 
-  //Array with objects
+  //Array with objects in LS
   function  addNewTask() {
   	let tasks = {};
   	tasks.name = localTask.value;
   	tasks.completed = false;
   	allTasks.unshift(tasks);
-  	localStorage.setItem("key", JSON.stringify(allTasks));
+  	localStorage.setItem('key', JSON.stringify(allTasks));
   	JSON.parse(localStorage.getItem('arrayTasks'));
     localTask.value = " ";
   }
   buttonTask.addEventListener('click', addNewTask);
 
-
-  const placeTask = document.querySelector('.item__name');
-  const taskList = document.querySelector('.tasks__list');
-  const liMaker = (text) => {
-    const li = document.createElement('li');
-    li.textContent = text;
-    taskList.appendChild(li);
+//Print elements
+  const placeTask = document.querySelector('.ulli');
+  const taskList = document.querySelector('.ullista');
+  function createLi(){
+    // const li = document.createElement('li');
+    // taskList.appendChild(li);
+    //
+    // taskList.innerHTML += 
   }
 
-  localStorage.setItem("key", JSON.stringify(allTasks));
+  buttonTask.addEventListener('click', createLi);
+
+  localStorage.setItem('key', JSON.stringify(allTasks));
   JSON.parse(localStorage.getItem('allTasks'));
 }

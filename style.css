@@ -114,7 +114,10 @@ input[type=checkbox]:checked + label:before {
 .item__name{
   /* margin-left: 10px; */
 }
-
+.ulli{
+  font-size: 50px;
+  color: black;
+}
 
 /*Add Task (hidden)*/
 .add__task{
