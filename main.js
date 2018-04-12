@@ -12,43 +12,57 @@ placeDayName.innerHTML = days[createDate.getDay()];
 var placeMonthNAme = document.querySelector('.date__month-year');
 placeMonthNAme.innerHTML = months[createDate.getMonth()] + ', ' + createDate.getFullYear();
 
-// //Tasks list
-// var tasks = '';
-// for (var i = 0; i < tasks.length; i++) {
-//   let item =
-//   `<li class="tasks__item">
-//     <input class="item__checkbox" type="checkbox">
-//     <h4 class="item__name">${tasks[i].name}</h4>
-//   </li>
-//   `
-// var placeTask = document.querySelector('.tasks__list');
-//       // analiza la cadena de texto e inserta los nodos en el orden determinado
-// placeTask.insertAdjacentHTML('beforeend', item);
-// }
 
-
-//Add task display
+// TASKS
+//Add and remove task editor display
 var placeShow = document.querySelector('.add__task');
 var buttonShow = document.querySelector('.button__add');
 function addTask(){
-  placeShow.classList.add('show');
+  placeShow.classList.toggle('show');
 }
 buttonShow.addEventListener('click', addTask);
 
-
-//Create New Task
-var allTasks = [];
-var buttonTask = document.querySelector('.new__task--button');
-//push
-function addNewTask(){
-    var placeTask = document.querySelector('.item__name');
-    var dataTask = document.querySelector('.new__task--input').value;
-  placeTask.innerHTML = dataTask;
-
+//LOCAL STORAGE
+saveInLocalStorage();
+getLocalStorage();
+function getLocalStorage(){
+  if(localStorage.getItem("key")){
+    const key = JSON.parse(localStorage.getItem("key"));
+    console.log(key);
+  }else{
+    console.log("No hay entradas en el local storage");
+  }
 }
-buttonTask.addEventListener('click', addNewTask);
+function saveInLocalStorage(){
+  let localTask = document.querySelector('.new__task--input');
+  const buttonTask = document.querySelector('.new__task--button');
+  const listTask = document.querySelector('.tasks__list');
+
+  // const buttonAdd = document.querySelector('.button--add');
+  // const addTask = document.querySelector('.new-task');
+  let allTasks = [];
+
+  //Array with objects
+  function  addNewTask() {
+  	let tasks = {};
+  	tasks.name = localTask.value;
+  	tasks.completed = false;
+  	allTasks.unshift(tasks);
+  	localStorage.setItem("key", JSON.stringify(allTasks));
+  	JSON.parse(localStorage.getItem('arrayTasks'));
+    localTask.value = " ";
+  }
+  buttonTask.addEventListener('click', addNewTask);
 
 
-//Cross out completed tasks
-var checkbox = document.querySelector('.checkbox').value;
-var cross = document.querySelector('.item__name');
+  const placeTask = document.querySelector('.item__name');
+  const taskList = document.querySelector('.tasks__list');
+  const liMaker = (text) => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    taskList.appendChild(li);
+  }
+
+  localStorage.setItem("key", JSON.stringify(allTasks));
+  JSON.parse(localStorage.getItem('allTasks'));
+}

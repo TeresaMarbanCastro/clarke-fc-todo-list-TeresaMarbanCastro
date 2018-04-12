@@ -79,7 +79,7 @@ input[type=checkbox] {
 label {
 	cursor: pointer;
 	position: relative;
-	color: black;
+	color: grey;
   padding-left: 30px;
   font-size: 20px;
 }
@@ -138,7 +138,7 @@ width: 80%;
   border: solid 1px white;
   border-radius: 20px;
   padding: 5px;
-
+  cursor: pointer;
 }
 .show{
   display: flex;
@@ -148,9 +148,9 @@ width: 80%;
   height: 100%;
   z-index: 1;
 }
+
 .hide{
 display: none;
-
 }
 
 /* Footer */
@@ -164,6 +164,7 @@ box-shadow: none;
 border: none;
 background-color: white;
 padding-top: 15px;
+cursor: pointer;
 }
 .button__add--img{
   width: 60px;
