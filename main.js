@@ -1,22 +1,22 @@
 'use strict'
 //DATE
-var createDate = new Date();
-var dayNumber = createDate.getDate();
-var days = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-var months = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubrer","Noviembre","Diciembre"];
+const createDate = new Date();
+const dayNumber = createDate.getDate();
+const days = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const months = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubrer","Noviembre","Diciembre"];
 
-var placeDayNumber = document.querySelector('.date__number');
+const placeDayNumber = document.querySelector('.date__number');
 placeDayNumber.innerHTML = dayNumber;
-var placeDayName = document.querySelector('.date__day');
+const placeDayName = document.querySelector('.date__day');
 placeDayName.innerHTML = days[createDate.getDay()];
-var placeMonthNAme = document.querySelector('.date__month-year');
+const placeMonthNAme = document.querySelector('.date__month-year');
 placeMonthNAme.innerHTML = months[createDate.getMonth()] + ', ' + createDate.getFullYear();
 
 
 // TASKS
 //Add and remove task editor display
-var placeShow = document.querySelector('.add__task');
-var buttonShow = document.querySelector('.button__add');
+const placeShow = document.querySelector('.add__task');
+const buttonShow = document.querySelector('.button__add');
 function addTask(){
   placeShow.classList.toggle('show');
 }
@@ -42,18 +42,6 @@ function saveInLocalStorage(){
     localTask.value = " ";
   }
   buttonTask.addEventListener('click', addNewTask);
-
-//Print elements
-  const placeTask = document.querySelector('.ulli');
-  const taskList = document.querySelector('.ullista');
-  function createLi(){
-    // const li = document.createElement('li');
-    // taskList.appendChild(li);
-    //
-    // taskList.innerHTML += 
-  }
-
-  buttonTask.addEventListener('click', createLi);
 
   localStorage.setItem('key', JSON.stringify(allTasks));
   JSON.parse(localStorage.getItem('allTasks'));
