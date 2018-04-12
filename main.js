@@ -47,3 +47,8 @@ function addNewTask(){
 
 }
 buttonTask.addEventListener('click', addNewTask);
+
+
+//Cross out completed tasks
+var checkbox = document.querySelector('.checkbox').value;
+var cross = document.querySelector('.item__name');
