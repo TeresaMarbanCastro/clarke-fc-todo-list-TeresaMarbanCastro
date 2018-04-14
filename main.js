@@ -28,7 +28,7 @@ saveInLocalStorage();
 function saveInLocalStorage(){
   let localTask = document.querySelector('.new__task--input');
   const buttonTask = document.querySelector('.new__task--button');
-  const listTask = document.querySelector('.tasks__list');
+      const listTask = document.querySelector('.tasks__list');
   let allTasks = [];
 
   //Array with objects in LS
@@ -40,6 +40,21 @@ function saveInLocalStorage(){
   	localStorage.setItem('key', JSON.stringify(allTasks));
   	JSON.parse(localStorage.getItem('arrayTasks'));
     localTask.value = " ";
+
+//Print list in html
+    function printTask() {
+      const listTask = document.querySelector('.tasks__list');
+      let localTask = document.querySelector('.new__task--input');
+      listTask.innerHTML +=
+    `<li class="tasks__item">
+        <div class="checkbox__container">
+          <input type="checkbox" id="checkbox"/>
+          <label for="checkbox" class="item__name">${(tasks.name)}
+          </label>
+        </div>
+      </li>`
+      }
+      printTask();
   }
   buttonTask.addEventListener('click', addNewTask);
 
