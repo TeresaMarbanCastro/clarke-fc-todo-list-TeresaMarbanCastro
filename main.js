@@ -45,19 +45,23 @@ function saveInLocalStorage(){
     function printTask() {
       const listTask = document.querySelector('.tasks__list');
       let localTask = document.querySelector('.new__task--input');
-      listTask.innerHTML +=
-    `<li class="tasks__item">
+
+  let item =   `<li class="tasks__item">
         <div class="checkbox__container">
           <input type="checkbox" id="checkbox"/>
           <label for="checkbox" class="item__name">${(tasks.name)}
           </label>
         </div>
       </li>`
+        listTask.insertAdjacentHTML('afterbegin',item);
       }
       printTask();
   }
   buttonTask.addEventListener('click', addNewTask);
 
+  function checkedItems(){
+
+  }
   localStorage.setItem('key', JSON.stringify(allTasks));
   JSON.parse(localStorage.getItem('allTasks'));
 }
