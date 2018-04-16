@@ -12,7 +12,8 @@ placeDayName.innerHTML = days[createDate.getDay()];
 const placeMonthNAme = document.querySelector('.date__month-year');
 placeMonthNAme.innerHTML = months[createDate.getMonth()] + ', ' + createDate.getFullYear();
 
-
+let getLocalStorage = localStorage.getItem('key')? JSON.parse(localStorage.getItem('key')) : console.log("No hay entradas en el local storage");
+saveInLocalStorage();
 // TASKS
 //Add and remove task editor display
 const placeShow = document.querySelector('.add__task');
@@ -23,45 +24,49 @@ function addTask(){
 buttonShow.addEventListener('click', addTask);
 
 //LOCAL STORAGE
-let getLocalStorage = localStorage.getItem('key')? JSON.parse(localStorage.getItem('key')) : console.log("No hay entradas en el local storage");
-saveInLocalStorage();
+
 function saveInLocalStorage(){
   let localTask = document.querySelector('.new__task--input');
   const buttonTask = document.querySelector('.new__task--button');
-      const listTask = document.querySelector('.tasks__list');
+  const listTask = document.querySelector('.tasks__list');
   let allTasks = [];
 
   //Array with objects in LS
   function  addNewTask() {
-  	let tasks = {};
-  	tasks.name = localTask.value;
-  	tasks.completed = false;
-  	allTasks.unshift(tasks);
-  	localStorage.setItem('key', JSON.stringify(allTasks));
-  	JSON.parse(localStorage.getItem('arrayTasks'));
+    let tasks = {};
+    tasks.name = localTask.value;
+    tasks.completed = false;
+    allTasks.unshift(tasks);
+    localStorage.setItem('key', JSON.stringify(allTasks));
+    JSON.parse(localStorage.getItem('allTasks'));
     localTask.value = " ";
 
-//Print list in html
+    //Print list in html
     function printTask() {
       const listTask = document.querySelector('.tasks__list');
       let localTask = document.querySelector('.new__task--input');
 
-  let item =   `<li class="tasks__item">
-        <div class="checkbox__container">
-          <input type="checkbox" id="checkbox"/>
-          <label for="checkbox" class="item__name">${(tasks.name)}
-          </label>
-        </div>
-      </li>`
-        listTask.insertAdjacentHTML('afterbegin',item);
-      }
-      printTask();
-  }
-  buttonTask.addEventListener('click', addNewTask);
+      let item =   `<li class="tasks__item">
+      <div class="checkbox__container">
+        <input type="checkbox" id="checkbox"/>
+        <label for="checkbox" class="item__name">${(tasks.name)}
+        </label>
+      </div>
+    </li>`
+    listTask.insertAdjacentHTML('afterbegin',item);
 
-  function checkedItems(){
-
+    //
+    // function check(){
+    // for (variable of iterable) {
+    //
+    // }
+    // }
   }
-  localStorage.setItem('key', JSON.stringify(allTasks));
-  JSON.parse(localStorage.getItem('allTasks'));
+  printTask();
+}
+buttonTask.addEventListener('click', addNewTask);
+
+//LO QUE NO PODÍA ARREGLAR ANTES DE ESTO => 
+// localStorage.setItem('key', JSON.stringify(allTasks));
+// JSON.parse(localStorage.getItem('allTasks'));
 }
